@@ -1,0 +1,36 @@
+/* Page-specific styles for login.html */
+
+.tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 22px;
+    background: #0a0e13;
+    border: 1px solid var(--edge);
+    border-radius: 12px;
+    padding: 4px;
+}
+
+.tab {
+    flex: 1;
+    padding: 10px;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted);
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.tab:hover { color: var(--ink); }
+.tab.active { background: var(--accent-dim); color: var(--accent); }
+.tab:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+.strength-hint {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: none;
+    color: var(--muted);
+}

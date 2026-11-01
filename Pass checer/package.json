@@ -1,0 +1,16 @@
+{
+  "name": "password-security-suite",
+  "version": "2.0.0",
+  "description": "Password strength analyzer + Flask/SQLite brute-force detection dashboard. See README.md to run the full app (python backend/app.py).",
+  "private": true,
+  "license": "MIT",
+  "main": "frontend/index.html",
+  "keywords": [
+    "password",
+    "security",
+    "entropy",
+    "strength-meter",
+    "brute-force-detection",
+    "flask"
+  ]
+}

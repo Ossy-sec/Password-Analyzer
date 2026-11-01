@@ -1,0 +1,131 @@
+/* Page-specific styles for dashboard.html */
+
+body { padding: clamp(16px, 4vw, 40px); }
+
+.dash { margin: 0 auto; }
+
+.dash-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.dash-title { margin: 0; font-size: clamp(22px, 4vw, 32px); }
+
+.dash-head-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.dash-head-right .top-nav { margin: 0; }
+.dash-head-right .btn { width: auto; padding: 10px 16px; font-size: 13px; }
+
+.whoami {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background: linear-gradient(180deg, var(--panel), var(--panel-2));
+    border: 1px solid var(--edge);
+    border-radius: 14px;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.stat-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+.stat-value { font-size: 28px; font-weight: 700; }
+.stat-card.warn .stat-value { color: var(--orange); }
+.stat-card.danger .stat-value { color: var(--red); }
+
+.card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+.card-head h2 { margin: 0; font-size: 16px; font-weight: 700; }
+
+.chart-card { margin-bottom: 20px; }
+#chart { width: 100%; display: block; }
+
+.simulate-card { margin-bottom: 20px; }
+.simulate-form {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.simulate-form .input-wrap { flex: 1; min-width: 200px; }
+.simulate-form .btn { width: auto; padding: 14px 20px; }
+
+.count-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+}
+.count-label input {
+    width: 64px;
+    background: #0a0e13;
+    border: 1px solid var(--edge);
+    border-radius: 8px;
+    color: var(--ink);
+    padding: 10px;
+    font-family: var(--mono);
+}
+
+.tables-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.table-wrap { overflow-x: auto; }
+
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td {
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--edge);
+    white-space: nowrap;
+}
+th {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+td.success { color: var(--accent); }
+td.fail { color: var(--red); }
+.severity-low { color: var(--muted); }
+.severity-medium { color: var(--orange); }
+.severity-high { color: var(--red); }
+.empty-row td { color: var(--faint); text-align: center; padding: 20px 10px; }
+
+@media (max-width: 760px) {
+    .tables-grid { grid-template-columns: 1fr; }
+}

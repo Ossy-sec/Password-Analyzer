@@ -1,0 +1,149 @@
+/* Page-specific styles for the Password Strength Analyzer (index.html).
+   Shared tokens, reset, .shell/.card/input/.btn/.toast etc. live in theme.css. */
+
+.icon-btn.eye { right: 52px; }
+.icon-btn.gen { right: 10px; }
+
+.capslock-warning {
+    margin: 8px 2px 0;
+    font-size: 12.5px;
+    font-family: var(--mono);
+    color: var(--yellow);
+}
+.capslock-warning[hidden] { display: none; }
+
+.meter-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 24px 0 10px;
+}
+
+.verdict { font-size: 20px; font-weight: 700; transition: color 0.4s; }
+.verdict .sub { display: block; font-size: 12px; font-weight: 400; color: var(--muted); font-family: var(--mono); letter-spacing: 0.05em; margin-top: 2px; }
+
+.entropy {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+    text-align: right;
+}
+.entropy b { color: var(--ink); font-size: 18px; }
+
+.track {
+    position: relative;
+    height: 10px;
+    background: #0a0e13;
+    border: 1px solid var(--edge);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.segs { position: absolute; inset: 0; display: flex; z-index: 2; pointer-events: none; }
+.segs span { flex: 1; border-right: 1px solid var(--bg); }
+.segs span:last-child { border-right: none; }
+
+.fill {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2%;
+    border-radius: 999px;
+    background: var(--red);
+    transition: width 0.5s cubic-bezier(.2,.7,.2,1), background 0.4s;
+    z-index: 1;
+}
+
+.reqs {
+    list-style: none;
+    padding: 0;
+    margin: 22px 0 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+}
+
+.reqs li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--muted);
+    transition: color 0.3s;
+}
+
+.reqs li .mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px; height: 20px;
+    border-radius: 6px;
+    border: 1px solid var(--edge);
+    flex-shrink: 0;
+    transition: all 0.3s;
+    font-size: 12px;
+}
+
+.reqs li.met { color: var(--ink); }
+.reqs li.met .mark {
+    background: var(--accent-dim);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.feedback {
+    margin-top: 22px;
+    border-top: 1px solid var(--edge);
+    padding-top: 18px;
+    display: grid;
+    gap: 14px;
+}
+
+.row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+}
+
+.row .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    min-width: 96px;
+    padding-top: 2px;
+}
+
+.row .val { color: var(--ink); }
+.row .val.warn { color: var(--orange); }
+.row .val.good { color: var(--accent); }
+.muted-note { color: var(--muted); }
+
+.tips { display: flex; flex-wrap: wrap; gap: 8px; }
+.tip {
+    font-size: 12.5px;
+    font-family: var(--mono);
+    color: var(--yellow);
+    background: rgba(255, 212, 83, 0.08);
+    border: 1px solid rgba(255, 212, 83, 0.2);
+    padding: 5px 10px;
+    border-radius: 999px;
+}
+
+.breach-line { display: flex; align-items: center; gap: 8px; }
+.spinner {
+    width: 13px; height: 13px;
+    border: 2px solid var(--edge);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 480px) {
+    .reqs { grid-template-columns: 1fr; }
+    .row { flex-direction: column; gap: 4px; }
+    .row .tag { min-width: 0; }
+    input.has-icons { padding-right: 90px; }
+}

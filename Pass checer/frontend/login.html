@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Sign in or register for the Password Security Suite demo." />
+    <meta name="theme-color" content="#0b0f14" />
+    <meta name="color-scheme" content="dark" />
+    <title>Sign In — Password Security Suite</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234dd6a8' stroke-width='2'%3E%3Crect x='4' y='11' width='16' height='10' rx='2'/%3E%3Cpath d='M8 11V7a4 4 0 0 1 8 0v4'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="theme.css" />
+    <link rel="stylesheet" href="auth.css" />
+</head>
+
+<body class="page-center">
+    <main class="shell">
+        <div class="eyebrow"><span class="dot"></span>· Password Security Suite</div>
+        <nav class="top-nav"><a href="index.html">← Strength Analyzer</a></nav>
+        <h1>Sign <span class="thin">in</span></h1>
+        <p class="lede">A local demo login system with real accounts and brute-force lockout.</p>
+
+        <section class="card">
+            <div class="tabs" role="tablist" aria-label="Sign in or register">
+                <button type="button" class="tab active" id="tab-login" role="tab" aria-selected="true" aria-controls="login-form">Log In</button>
+                <button type="button" class="tab" id="tab-register" role="tab" aria-selected="false" aria-controls="register-form">Register</button>
+            </div>
+
+            <form id="login-form" autocomplete="off" novalidate>
+                <div class="field-label"><label for="login-username">Username</label></div>
+                <div class="input-wrap">
+                    <input type="text" id="login-username" name="username" placeholder="your-username" autocomplete="username" required />
+                </div>
+
+                <div class="field-label" style="margin-top:16px"><label for="login-password">Password</label></div>
+                <div class="input-wrap">
+                    <input type="password" id="login-password" name="password" placeholder="••••••••" autocomplete="current-password" required />
+                </div>
+
+                <p class="error-text" id="login-error" role="alert"></p>
+                <button type="submit" class="btn" id="login-submit" style="margin-top:8px">Log In</button>
+            </form>
+
+            <form id="register-form" autocomplete="off" novalidate hidden>
+                <div class="field-label"><label for="register-username">Username</label></div>
+                <div class="input-wrap">
+                    <input type="text" id="register-username" name="username" placeholder="3-32 letters, numbers, underscore" autocomplete="username" required />
+                </div>
+
+                <div class="field-label" style="margin-top:16px">
+                    <label for="register-password">Password</label>
+                    <span class="strength-hint" id="strength-hint"></span>
+                </div>
+                <div class="input-wrap">
+                    <input type="password" id="register-password" name="password" placeholder="At least Fair strength required" autocomplete="new-password" required />
+                </div>
+
+                <p class="error-text" id="register-error" role="alert"></p>
+                <button type="submit" class="btn" id="register-submit" style="margin-top:8px">Create Account</button>
+            </form>
+        </section>
+
+        <p class="foot">
+            Demo credentials only — this is a local learning project, not a real account system.<br>
+            Passwords are hashed with Argon2id and never logged.
+        </p>
+    </main>
+
+    <script src="auth.js"></script>
+</body>
+
+</html>

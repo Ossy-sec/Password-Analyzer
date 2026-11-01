@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Live security dashboard: login attempts, brute-force detection status, and security events." />
+    <meta name="theme-color" content="#0b0f14" />
+    <meta name="color-scheme" content="dark" />
+    <title>Security Dashboard</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234dd6a8' stroke-width='2'%3E%3Crect x='4' y='11' width='16' height='10' rx='2'/%3E%3Cpath d='M8 11V7a4 4 0 0 1 8 0v4'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="theme.css" />
+    <link rel="stylesheet" href="dashboard.css" />
+</head>
+
+<body>
+    <main class="shell wide dash">
+        <header class="dash-head">
+            <div>
+                <div class="eyebrow"><span class="dot"></span>· Password Security Suite</div>
+                <h1 class="dash-title">Security <span class="thin">Dashboard</span></h1>
+            </div>
+            <div class="dash-head-right">
+                <nav class="top-nav"><a href="index.html">Strength Analyzer</a></nav>
+            </div>
+        </header>
+
+        <section class="stats-grid" id="stats-grid" aria-live="polite">
+            <div class="stat-card">
+                <span class="stat-label">Attempts (24h)</span>
+                <span class="stat-value" id="stat-total">—</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Failed (24h)</span>
+                <span class="stat-value" id="stat-failed">—</span>
+            </div>
+            <div class="stat-card warn">
+                <span class="stat-label">Suspicious events</span>
+                <span class="stat-value" id="stat-suspicious">—</span>
+            </div>
+            <div class="stat-card danger">
+                <span class="stat-label">Brute-force events</span>
+                <span class="stat-value" id="stat-bruteforce">—</span>
+            </div>
+            <div class="stat-card danger">
+                <span class="stat-label">Locked accounts</span>
+                <span class="stat-value" id="stat-locked">—</span>
+            </div>
+        </section>
+
+        <section class="card chart-card">
+            <div class="card-head">
+                <h2>Failed attempts, last 24h</h2>
+            </div>
+            <canvas id="chart" height="140" role="img" aria-label="Bar chart of failed login attempts per hour over the last 24 hours"></canvas>
+        </section>
+
+        <section class="card simulate-card">
+            <div class="card-head">
+                <h2>Simulate failed logins</h2>
+                <span class="muted-note">Safe, local-only — generates synthetic failed attempts through the real detector.</span>
+            </div>
+            <form id="simulate-form" class="simulate-form" autocomplete="off" novalidate>
+                <div class="input-wrap">
+                    <input type="text" id="simulate-identifier" placeholder="username to target, e.g. alice" required />
+                </div>
+                <label class="count-label">
+                    Attempts
+                    <input type="number" id="simulate-count" min="1" max="15" value="10" />
+                </label>
+                <button type="submit" class="btn" id="simulate-submit">Run Simulation</button>
+            </form>
+            <p class="error-text" id="simulate-status" role="status"></p>
+        </section>
+
+        <section class="tables-grid">
+            <div class="card">
+                <div class="card-head"><h2>Recent security events</h2></div>
+                <div class="table-wrap">
+                    <table id="events-table">
+                        <thead><tr><th>Type</th><th>Identifier</th><th>Severity</th><th>Details</th><th>Time (UTC)</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-head"><h2>Recent login attempts</h2></div>
+                <div class="table-wrap">
+                    <table id="attempts-table">
+                        <thead><tr><th>Identifier</th><th>IP</th><th>Result</th><th>Time (UTC)</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <p class="foot">
+            All timestamps are UTC. See the README for how thresholds are configured.
+        </p>
+    </main>
+
+    <script src="dashboard.js"></script>
+</body>
+
+</html>
