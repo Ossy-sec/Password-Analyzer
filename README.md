@@ -12,15 +12,15 @@ Everything runs from **one Flask process on one port** — the backend serves th
 ## Architecture
 
 ```
-Browser  ──────────────────────────────────────────────►  Flask (backend/app.py), port 5000
-                                                             ├─ serves frontend/*.html/css/js as static files
-                                                             └─ /api/*  (JSON)
-                                                                 ├─ auth.py      register / login / logout / me
-                                                                 └─ password.py  check-password (strength)
-                                                                        │
-                                                             security/brute_force.py  ← detection + lockout logic
-                                                             security/password_hashing.py  ← Argon2id
-                                                             security/strength.py  ← entropy scoring
+Browser  ─────  Flask (backend/app.py), port 5000
+                                 ├─ serves frontend/*.html/css/js as static files
+                                 └─ /api/*  (JSON)
+                                 ├─ auth.py      register / login / logout / me
+                                 └─ password.py  check-password (strength)
+                                         │
+                                         security/brute_force.py  ← detection + lockout logic
+                                         security/password_hashing.py  ← Argon2id
+                                         security/strength.py  ← entropy scoring
                                                                         │
                                                                     SQLite (backend/instance/app.db)
 ```
